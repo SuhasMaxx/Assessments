@@ -1,0 +1,97 @@
+.poster-renderer{
+    max-width: 100%;
+    -webkit-box-shadow: 0 5px 11px 0 rgba(0,0,0,.18),0 4px 15px 0 rgba(0,0,0,.15);
+    -moz-box-shadow: 0 5px 11px 0 rgba(0,0,0,.18),0 4px 15px 0 rgba(0,0,0,.15);
+    box-shadow: 0 5px 11px 0 rgba(0,0,0,.18),0 4px 15px 0 rgba(0,0,0,.15);
+    
+  
+  }
+  
+  .no-image-text{
+    color: grey;
+    font-style: italic;
+    width: 100%;
+    height: 100%;
+    background-color: #dbdcdc;
+  }
+  
+  .movie-title{
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  
+  .highlight-label{
+    font-weight: bold;
+  }
+  
+  .show-more{
+    color: blue;
+    font-size: 0.7rem;
+    font-style: italic;
+  }
+  
+  .listed-data div{
+    text-align: left;
+    margin: 10px;
+  }
+  
+  .movie-block{
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    -webkit-box-shadow: 5px 5px 9px 0px rgba(153,141,153,1);
+    -moz-box-shadow: 5px 5px 9px 0px rgba(153,141,153,1);
+    box-shadow: 5px 5px 9px 0px rgba(153,141,153,1);
+  }
+  
+  .release-date{
+    padding: 5px 10px;
+    margin: 10px;
+    border-radius: 5px;
+    color: white;
+    font-size: 0.8rem;
+    background-color: darkcyan;
+  }
+  
+  .runtime{
+    padding: 5px 10px;
+    margin: 5px;
+    border-radius: 5px;
+    color: white;
+    font-size: 0.8rem;
+    background-color: #d69a4d;
+  }
+  
+  .meta-data{
+    margin: 5px;
+  }
+  
+  .award-text{
+    font-style: italic;
+    color: #1194d6;
+  }
+
+  .lds-dual-ring {
+    display: inline-block;
+    width: 64px;
+    height: 64px;
+  }
+  .lds-dual-ring:after {
+    content: " ";
+    display: block;
+    width: 46px;
+    height: 46px;
+    margin: 1px;
+    border-radius: 50%;
+    border: 5px solid #999999;
+    border-color: #999999 transparent #999999 transparent;
+    animation: lds-dual-ring 1.2s linear infinite;
+  }
+  @keyframes lds-dual-ring {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }

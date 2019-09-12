@@ -1,0 +1,8 @@
+{
+  "server": "http://www.omdbapi.com",
+  "apiKey": "&apiKey=6c3a2d45",
+  "featuredMovies": [
+    "tt0304141",
+    "tt0295297"
+  ]
+}

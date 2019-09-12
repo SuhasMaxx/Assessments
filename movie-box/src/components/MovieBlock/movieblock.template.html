@@ -1,0 +1,31 @@
+<div>
+    <b-container class="bv-example-row movie-block">
+      <b-row>
+        <b-col cols="4">
+            <img class="poster-renderer" v-if="movieData.Poster != 'N/A'" :src="movieData.Poster"/>
+            <div v-else class="no-image-text">No Image</div>
+            <div v-if='loading' class="lds-dual-ring"></div>
+        </b-col>
+        <b-col cols="8">
+            <div class="movie-title">{{movieData.Title}}</div>
+            <div v-if="!featureMode" class="meta-data"><span class="release-date">{{movieData.Released}}</span><span class="runtime">{{movieData.Runtime}}</span></div>
+            <div>{{movieData.Type | capitalize}} | 
+                {{movieData.Year}} | 
+                {{movieData.Genre | capitalize}} 
+                <span class="rated" v-if="movieData.Rated != 'N/A' && !featureMode">| {{movieData.Rated | capitalize}}</span></div> 
+            <span class="listed-data">
+                <div v-if="!featureMode" ><span class="highlight-label">Director: </span> {{movieData.Director | capitalize}}</div>
+                <div v-if="!featureMode" ><span class="highlight-label">Stars: </span>{{movieData.Actors}}</div>
+                <div> <span class="highlight-label">Plot: </span><br>
+                <span class="less">{{movieData.lessPlot}}</span>
+                <span v-if="moreShown" class="more">{{movieData.morePlot}}</span> 
+                <span v-if="isPlotBig" @click="toggleMore" class="show-more">{{moreShown ? "  (Show less)" : "...(Show more)"}}</span>
+                <span v-else>{{movieData.Plot}}</span>
+                </div>
+                <div><span class="highlight-label">Awards: </span><span class="award-text">{{movieData.Awards}}</span> </div>
+            </span>
+        </b-col>
+      </b-row>
+    </b-container>
+      <!-- {{movieData.id}}<br> -->
+</div>
