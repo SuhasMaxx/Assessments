@@ -26,8 +26,9 @@
   
   .show-more{
     color: blue;
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     font-style: italic;
+    cursor: pointer;
   }
   
   .listed-data div{
@@ -42,6 +43,7 @@
     -webkit-box-shadow: 5px 5px 9px 0px rgba(153,141,153,1);
     -moz-box-shadow: 5px 5px 9px 0px rgba(153,141,153,1);
     box-shadow: 5px 5px 9px 0px rgba(153,141,153,1);
+    margin-bottom: 1rem;
   }
   
   .release-date{
