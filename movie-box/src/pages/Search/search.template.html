@@ -1,4 +1,5 @@
 <div >
+  <!-- input for user & Search button -->
   <b-input-group>
       <b-form-input v-model="searchString" v-on:keyup.enter="onEnter" placeholder="Enter movie title here"></b-form-input>
       <template v-slot:append>
@@ -6,16 +7,22 @@
       </template>
   </b-input-group>
 
+  <!-- Switch to select plot to be Short ofr Full -->
   <b-form-checkbox :disabled="!searchString" @change="onEnter" switch class="mr-n2 search-option" v-model="shortPlot">Shorten Plot
     <span class="sr-only">Switch</span>
   </b-form-checkbox> 
 
+  <!-- Display movies from result [ top 5 ] -->
   <div v-if="filteredIds.length" class="result">
     <movie-block v-for="(movieId, index) in filteredIds" v-bind:key="movieId" :shortPlot="shortPlot" :movieId="movieId"></movie-block>
   </div>
+
+  <!-- Loader Spinner -->
   <div v-if="loading" class="spinner-grow text-primary" role="status">
     <span class="sr-only">Loading...</span>
   </div>
+
+  <!-- Error feedback text in case of failure -->
   <div v-if="errFeedback && searchString" class="error">
       <b-alert show variant="danger">{{errFeedback}} <b>&#128533;</b> </b-alert>
   </div>

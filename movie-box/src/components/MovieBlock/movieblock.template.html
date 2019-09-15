@@ -1,34 +1,44 @@
 <div>
+  <!-- Main container of the movie information card -->
     <b-container class="bv-example-row movie-block" :class="{featured: featureMode}">
       <b-row>
+        <!-- Render poster for the movie -->
         <b-col cols="4">
             <img class="poster-renderer" v-if="movieData.Poster != 'N/A'" :src="movieData.Poster"/>
             <div v-else class="no-image-text">No Image</div>
             <div v-if='loading' class="lds-dual-ring"></div>
         </b-col>
+        <!-- Display text infomation about the movie -->
         <b-col cols="8">
+            <!-- Title of the movvie -->
             <div class="movie-title">{{movieData.Title}}</div>
+            <!-- Released date and runtime of the movie -->
             <div v-if="!featureMode" class="meta-data">
-              <b-badge pill variant="success">{{movieData.Released}}</b-badge>
-              <b-badge pill variant="warning">{{movieData.Runtime}}</b-badge>
+              <b-badge pill variant="success" title="Released date">{{movieData.Released}}</b-badge>
+              <b-badge pill variant="warning" title="Runtime">{{movieData.Runtime}}</b-badge>
             </div>
+            <!-- Other information about movie like type, Genre, Year -->
             <div class="sub-info">{{movieData.Type | capitalize}} | 
                 {{movieData.Year}} | 
                 {{movieData.Genre | capitalize}} 
-                <span class="rated" v-if="movieData.Rated != 'N/A' && !featureMode">| {{movieData.Rated | capitalize}}</span></div> 
+                <span class="rated" v-if="movieData.Rated != 'N/A' && !featureMode">| {{movieData.Rated | capitalize}}</span>
+            </div> 
             <span class="listed-data">
+                <!-- Director  -->
                 <div v-if="!featureMode" ><span class="highlight-label">Director: </span> {{movieData.Director | capitalize}}</div>
+                <!-- List of actors -->
                 <div v-if="!featureMode" ><span class="highlight-label">Stars: </span><ul class="actor-list"><li v-for="actor in actorsList">{{actor}}</li></ul></div>
+                <!-- Plot with "show more" feature -->
                 <div> <span class="highlight-label">Plot: </span><br>
                 <span class="less">{{movieData.lessPlot}}</span>
                 <span v-if="moreShown" class="more">{{movieData.morePlot}}</span> 
                 <span v-if="isPlotBig" @click="toggleMore" class="show-more">{{moreShown ? "  (Show less)" : "...(Show more)"}}</span>
                 <span v-else>{{movieData.Plot}}</span>
                 </div>
+                <!-- Awards -->
                 <div><span class="highlight-label">Awards: </span><span class="award-text">{{movieData.Awards}}</span> </div>
             </span>
         </b-col>
       </b-row>
     </b-container>
-      <!-- {{movieData.id}}<br> -->
 </div>

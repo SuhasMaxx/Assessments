@@ -1,3 +1,4 @@
-<div>
+<div class="featured-container">
+  <!-- Display movie blocks of individual featured movies -->
   <movie-block v-for="id in movies" v-bind:key="id" :featureMode="true" :shortPlot="false" :movieId="id"></movie-block>
 </div>
