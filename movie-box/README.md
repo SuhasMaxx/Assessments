@@ -1,5 +1,8 @@
 # movie-box
 
+Prerequisites:
+- Node JS ( Latest Stable Release ) you can download it from https://nodejs.org/en/
+
 ## Project setup
 ```
 npm install
@@ -17,7 +20,7 @@ npm run build
 
 ### Run your tests
 ```
-npm run test
+npm run test:unit
 ```
 
 ### Lints and fixes files
