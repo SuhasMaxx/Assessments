@@ -33,6 +33,17 @@ export default {
       } else {
         return false;
       }
+    },
+    actorsList(){
+      var valueList = [];
+      if(this.movieData.Actors){
+        if(this.movieData.Actors.indexOf(',') >= 0){
+          valueList = this.movieData.Actors.split(',');
+        } else {
+          valueList = [this.movieData.Actors]
+        }
+      }
+      return valueList;
     }
   },
   methods:{

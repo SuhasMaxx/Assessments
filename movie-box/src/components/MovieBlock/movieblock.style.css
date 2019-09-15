@@ -3,8 +3,6 @@
     -webkit-box-shadow: 0 5px 11px 0 rgba(0,0,0,.18),0 4px 15px 0 rgba(0,0,0,.15);
     -moz-box-shadow: 0 5px 11px 0 rgba(0,0,0,.18),0 4px 15px 0 rgba(0,0,0,.15);
     box-shadow: 0 5px 11px 0 rgba(0,0,0,.18),0 4px 15px 0 rgba(0,0,0,.15);
-    
-  
   }
   
   .no-image-text{
@@ -61,16 +59,37 @@
     border-radius: 5px;
     color: white;
     font-size: 0.8rem;
-    background-color: #d69a4d;
+    background-color: #ffae46;
+  }
+
+  .featured{
+    border: 2px dashed #1192c5;
+    background-color: #eaffed;
   }
   
   .meta-data{
     margin: 5px;
   }
+
+  .meta-data span{
+    margin: 0.2rem;
+    padding: 0.4rem 0.4rem;
+  }
+
+  .sub-info{
+    font-size: 0.85rem;
+    color: #128d94;
+  }
   
   .award-text{
     font-style: italic;
     color: #1194d6;
+  }
+
+  ul.actor-list{
+    list-style: none;
+    margin-left: 1rem;
+    margin-top: -1.5rem;
   }
 
   .lds-dual-ring {
