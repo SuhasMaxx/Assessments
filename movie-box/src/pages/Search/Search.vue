@@ -65,7 +65,7 @@ export default {
     searchMovie(){
       this.loading = true;
       this.filteredIds.splice(0, this.filteredIds.length);
-      axios.get(GlobalConfig.server + "/?s=" + this.searchString + this.getPlotType() + GlobalConfig.apiKey)
+      axios.get(GlobalConfig.server + "/?s=" + this.searchString + GlobalConfig.apiKey)
       .then((response) => {
           this.loading = false;
           if(response.data.Response == "False"){
@@ -93,12 +93,6 @@ export default {
       if(this.searchString.trim()){
         this.searchMovie();
       }
-    },
-    /**
-     * Get the plot type. Short or Full
-     */
-    getPlotType(){
-      return this.shortPlot ? "&plot=short" : "";
     },
     /**
      * Resets the serahc string to blank

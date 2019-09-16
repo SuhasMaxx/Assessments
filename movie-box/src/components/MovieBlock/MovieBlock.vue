@@ -113,7 +113,7 @@ export default {
      * Build the URL parameter for short or full based on user choice on the UI
      */
     getPlotType(){
-      return this.shortPlot ? "&plot=short" : "";
+      return this.shortPlot ? "&plot=short" : "&plot=full";
     },
 
     /**
