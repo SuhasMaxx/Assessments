@@ -1,7 +1,8 @@
-<template src="./movieblock.template.html" />
+<template src="./movieblock.template.html"></template>
 <style src="./movieblock.style.css" scoped></style>
 <script>
 import axios from 'axios'
+import GlobalConfig from '../../moviebox.config.json'
 
 /**
  * Movie card that displays movei information like Poster, Title, Directors, Actors etc.
@@ -95,7 +96,7 @@ export default {
      */
     getData(){
         this.loading = true;
-        axios.get('http://www.omdbapi.com/?i='+ this.movieId + this.getPlotType() +'&plot=full&apikey=PlzBanM3')
+        axios.get('http://www.omdbapi.com/?i='+ this.movieId + this.getPlotType() + GlobalConfig.apiKey)
         .then((response) => {
           this.movieData = response.data;
           if(this.movieData.Plot.length > 200){

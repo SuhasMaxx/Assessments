@@ -6,7 +6,7 @@ import BootstrapVue from 'bootstrap-vue'
 Vue.use(BootstrapVue)
 
 describe('MovieBlock.vue', () => {
-  it('renders movie block when passed movie id, shortPlot and featureMode', () => {
+  it('renders featured block properly', () => {
     const wrapper = mount(Featured)
     expect(wrapper.contains('div.featured-container')).toBe(true);
   })

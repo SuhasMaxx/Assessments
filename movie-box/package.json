@@ -6,7 +6,10 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "test:unit": "vue-cli-service test:unit --watch"
+    "test:unit": "vue-cli-service test:unit",
+    "dev": "...",
+    "test:e2e-inbuilt-run": "testcafe chrome tests/moviebox.e2e.test.js --app \"npm run serve\" --app-init-delay 20000 -S -s screenshots",
+    "test:e2e": "testcafe chrome tests/*.e2e.js"
   },
   "dependencies": {
     "axios": "^0.19.0",
@@ -15,7 +18,9 @@
     "core-js": "^2.6.5",
     "sinon": "^7.4.2",
     "vue": "^2.6.10",
-    "vue-router": "^3.1.3"
+    "vue-router": "^3.1.3",
+    "webpack": "^4.40.2",
+    "webpack-cli": "^3.3.8"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.11.0",
@@ -31,6 +36,7 @@
     "jest": "^24.9.0",
     "jest-vue-preprocessor": "^1.5.0",
     "jsdom": "^15.1.1",
+    "testcafe": "^1.5.0",
     "vue-server-renderer": "^2.6.10",
     "vue-template-compiler": "^2.6.10"
   },

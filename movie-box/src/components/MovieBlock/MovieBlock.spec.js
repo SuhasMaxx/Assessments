@@ -17,6 +17,39 @@ describe('MovieBlock.vue', () => {
     expect(wrapper.contains('div')).toBe(true);
   })
 
+  const jsData = {
+    Title: "Dam Busters: The Race to Smash the German Dams",
+    Year: "2011",
+    Rated: "N/A",
+    Released: "08 Nov 2011",
+    Runtime: "59 min",
+    Genre: "Documentary",
+    Director: "Aaron Young",
+    Writer: "James Holland",
+    Actors: "James Holland, John Canmore, Daniel Godward, Mackenzie Scott",
+    Plot: "James Holland presents an analysis of the legendary 1943 Dam Busters raid.",
+    Language: "English",
+    Country: "UK",
+    Awards: "N/A",
+    Poster: "N/A",
+    Ratings: [
+      {
+        Source: "Internet Movie Database",
+        Value: "8.5/10"
+      }
+    ],
+    Metascore: "N/A",
+    imdbRating: "8.5",
+    imdbVotes: "6",
+    imdbID: "tt2118607",
+    Type: "movie",
+    DVD: "N/A",
+    BoxOffice: "N/A",
+    Production: "N/A",
+    Website: "N/A",
+    Response: "True"
+  };
+
   it('renders movie Title when passed movie id, shortPlot and featureMode', () => {
     const wrapper = mount(MovieBlock, {
       propsData: { movieId: 'tt2118607',
@@ -28,39 +61,6 @@ describe('MovieBlock.vue', () => {
 
   it('renders movie Title when passed movie id, shortPlot and featureMode', () => {
     const sandbox = sinon.createSandbox();
-    const jsData = {
-      Title: "Dam Busters: The Race to Smash the German Dams",
-      Year: "2011",
-      Rated: "N/A",
-      Released: "08 Nov 2011",
-      Runtime: "59 min",
-      Genre: "Documentary",
-      Director: "Aaron Young",
-      Writer: "James Holland",
-      Actors: "James Holland, John Canmore, Daniel Godward, Mackenzie Scott",
-      Plot: "James Holland presents an analysis of the legendary 1943 Dam Busters raid.",
-      Language: "English",
-      Country: "UK",
-      Awards: "N/A",
-      Poster: "N/A",
-      Ratings: [
-      {
-      Source: "Internet Movie Database",
-      Value: "8.5/10"
-      }
-      ],
-      Metascore: "N/A",
-      imdbRating: "8.5",
-      imdbVotes: "6",
-      imdbID: "tt2118607",
-      Type: "movie",
-      DVD: "N/A",
-      BoxOffice: "N/A",
-      Production: "N/A",
-      Website: "N/A",
-      Response: "True"
-    };
-    
     const promise = new Promise( res => {
       res({
         data: jsData
@@ -81,6 +81,13 @@ describe('MovieBlock.vue', () => {
     
     promise.then(() => {
       expect(vm.movieData.Year).toEqual(jsData.Year);
+      expect(vm.movieData.Title).toEqual(jsData.Title);
+      expect(vm.movieData.Rated).toEqual(jsData.Rated);
+      expect(vm.movieData.Runtime).toEqual(jsData.Runtime);
+      expect(vm.movieData.Genre).toEqual(jsData.Genre);
+      expect(vm.movieData.Director).toEqual(jsData.Director);
+      expect(vm.movieData.Writer).toEqual(jsData.Writer);
+      expect(vm.movieData.Actors).toEqual(jsData.Actors);
       /* done() */
     })
     

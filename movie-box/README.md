@@ -1,5 +1,5 @@
-## MovieBox
-A simple vue js app for searching movie information using OMDB API.
+# MovieBox
+A simple vue js app for searching movie information using OMDB API. The App is developed in Vue JS and uses Axios to make server calls.
 
 ## Prerequisites:
 - Node JS ( Latest Stable Release ) you can download it from https://nodejs.org/en/
@@ -19,10 +19,16 @@ npm run serve
 npm run build
 ```
 
-### Run your tests
+### Run unit tests
 ```
 npm run test:unit
 ```
+
+### Run end to end tests
+```
+npm run test:e2e
+```
+*Note: This command needs npm run serve to be running in the background*
 
 ### Lints and fixes files
 ```

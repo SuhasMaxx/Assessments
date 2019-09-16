@@ -6,7 +6,7 @@ import BootstrapVue from 'bootstrap-vue'
 Vue.use(BootstrapVue)
 
 describe('Search.vue', () => {
-  it('renders movie block when passed movie id, shortPlot and featureMode', () => {
+  it('renders search option', () => {
     const wrapper = mount(Search)
     expect(wrapper.contains('.search-option')).toBe(true);
   })
