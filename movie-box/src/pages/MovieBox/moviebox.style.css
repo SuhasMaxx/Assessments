@@ -26,6 +26,10 @@ h3 {
     color: #2a7955;
   }
 
+  .app-title{
+    margin: 1rem;
+  }
+
   li.nav-item a{
     font-weight: bold;
     padding: 5px;

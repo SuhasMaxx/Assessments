@@ -64,12 +64,22 @@ test('The header is loaded properly', async testController => {
     await testController.expect(paragraphSelector.innerText).eql('MovieBox');
 });
 
-test('Should show loading icon when clicked on Search after enering valid search string', async t => {
+/* test('Should show loading icon when clicked on Search after enering valid search string', async t => {
     await t
         .typeText('.movie-title-input','harry')
         .click('.btn-search-movie')
         
         const loadingSpinner = await new Selector('.spinner-grow');
+        await t.expect(loadingSpinner.visible).ok();
+});
+ */
+
+test('Should show result movie block clicked on Search after enering valid search string', async t => {
+    await t
+        .typeText('.movie-title-input','harry')
+        .click('.btn-search-movie')
+        
+        const loadingSpinner = await new Selector('.movie-block');
         await t.expect(loadingSpinner.visible).ok();
 });
 

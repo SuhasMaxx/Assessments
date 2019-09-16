@@ -9,7 +9,7 @@
     "test:unit": "vue-cli-service test:unit",
     "dev": "...",
     "test:e2e-inbuilt-run": "testcafe chrome tests/moviebox.e2e.test.js --app \"npm run serve\" --app-init-delay 20000 -S -s screenshots",
-    "test:e2e": "testcafe chrome tests/*.e2e.js"
+    "test:e2e": "testcafe \"chrome:headless\" tests/*.e2e.js"
   },
   "dependencies": {
     "axios": "^0.19.0",
@@ -51,7 +51,12 @@
     ],
     "rules": {},
     "parserOptions": {
-      "parser": "babel-eslint"
+      "parser": "babel-eslint",
+      "ecmaVersion": 7,
+      "sourceType": "module",
+      "ecmaFeatures": {
+        "jsx": true
+      }
     },
     "overrides": [
       {

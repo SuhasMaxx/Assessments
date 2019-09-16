@@ -6,3 +6,13 @@
     text-align: left !important;
     margin: 1rem;
 }
+
+.short-plot-info{
+    background-color: #1192c5;
+    padding: 0px 10px;
+    display: inline-block;
+    border-radius: 12px;
+    font-weight: bold;
+    color: #fefeff;
+    margin-left: 5px;
+}

@@ -8,9 +8,11 @@
   </b-input-group>
 
   <!-- Switch to select plot to be Short ofr Full -->
-  <b-form-checkbox :disabled="!searchString" @change="onEnter" switch class="mr-n2 search-option" v-model="shortPlot">Shorten Plot
-    <span class="sr-only">Switch</span>
+  <b-form-checkbox :disabled="!searchString" @change="onEnter" switch class="mr-n2 search-option" v-model="shortPlot">Short Plot 
+    <div v-b-tooltip.hover class="short-plot-info" title="Show shorter plot for movies">!</div>
+    <span class="sr-only" >Switch</span>
   </b-form-checkbox> 
+  
 
   <!-- Display movies from result [ top 5 ] -->
   <div v-if="filteredIds.length" class="result">

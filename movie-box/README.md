@@ -1,5 +1,5 @@
 # MovieBox
-A simple vue js app for searching movie information using OMDB API. The App is developed in Vue JS and uses Axios to make server calls.
+A simple Front End app for searching movie information using OMDB API. The App is developed in Vue JS and uses Axios to make server calls.
 
 ## Prerequisites:
 - Node JS ( Latest Stable Release ) you can download it from https://nodejs.org/en/
