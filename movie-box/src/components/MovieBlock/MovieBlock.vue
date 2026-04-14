@@ -1,25 +1,25 @@
 <template src="./movieblock.template.html"></template>
 <style src="./movieblock.style.css" scoped></style>
 <script>
+/* eslint-disable no-unused-vars */
+import { ref, computed, onMounted, defineComponent } from 'vue'
 import axios from 'axios'
 import GlobalConfig from '../../moviebox.config.json'
 
 /**
- * Movie card that displays movei information like Poster, Title, Directors, Actors etc.
+ * Movie card that displays movie information like Poster, Title, Directors, Actors etc.
  * The information is fetched from online API using OMDB id of the movie
  */
-export default {
+export default defineComponent({
   name: 'MovieBlock',
-  components: {
-  },
-  props:{
+  props: {
     /**
      * OMDB id of the movie
      */
     movieId: String,
 
     /**
-     * Boolean that defines whether to fetch Short of Full plot forthe requested movie
+     * Boolean that defines whether to fetch Short or Full plot for the requested movie
      */
     shortPlot: Boolean,
 
@@ -28,100 +28,97 @@ export default {
      */
     featureMode: Boolean
   },
-  data() {
-    return {
+  setup(props) {
+    // State
+    const movieData = ref({})
+    const moreShown = ref(false)
+    const loading = ref(true)
 
-      /**
-       * Information fetched from API is stored in this object
-       */
-        movieData: {
-        },
-
-        /**
-         * This boolean sets the "show more" property for plot to view limited text in plot or complete plot
-         */
-        moreShown: false,
-
-        /**
-         * Hide or show the loading spinner
-         */
-        loading: true
-    }
-  },
-  filters: {
-    /**
-     * This filter makes fist letter of the word to Capital
-     * @param {String} value text which needs to be Capitalized
-     */
-    capitalize: function (value) {
-      if (!value) return ''
-      value = value.toString()
-      return value.charAt(0).toUpperCase() + value.slice(1)
-    }
-  },
-  mounted(){
-    this.getData();
-  },
-  computed:{
     /**
      * Returns true if Plot is bigger than 200 characters.
      */
-    isPlotBig(){
-      if(this.movieData.Plot && this.movieData.Plot.length > 200){
-        return true;
-      } else {
-        return false;
+    const isPlotBig = computed(() => {
+      if (movieData.value.Plot && movieData.value.Plot.length > 200) {
+        return true
       }
-    },
+      return false
+    })
 
     /**
-     * Process comma seperated values of name of actors to the array of names. 
+     * Process comma separated values of name of actors to the array of names.
      */
-    actorsList(){
-      var valueList = [];
-      if(this.movieData.Actors){
-        if(this.movieData.Actors.indexOf(',') >= 0){
-          valueList = this.movieData.Actors.split(',');
+    const actorsList = computed(() => {
+      const valueList = []
+      if (movieData.value.Actors) {
+        if (movieData.value.Actors.indexOf(',') >= 0) {
+          return movieData.value.Actors.split(',')
         } else {
-          valueList = [this.movieData.Actors]
+          return [movieData.value.Actors]
         }
       }
-      return valueList;
-    }
-  },
-  methods:{
-    
-    /**
-     * Make API request to the OMDB API to get rhe data for movie by passing OMDB movie id as parameter.
-     */
-    getData(){
-        this.loading = true;
-        axios.get('http://www.omdbapi.com/?i='+ this.movieId + this.getPlotType() + GlobalConfig.apiKey)
-        .then((response) => {
-          this.movieData = response.data;
-          if(this.movieData.Plot.length > 200){
-            this.movieData.lessPlot = this.movieData.Plot.slice(0,200);
-            this.movieData.morePlot = this.movieData.Plot.slice(200,this.movieData.Plot.length - 1);
-          }
-          this.loading = false;
-        }).catch(() => {
-          // console.log(error);
-        });
-    },
+      return valueList
+    })
 
     /**
      * Build the URL parameter for short or full based on user choice on the UI
      */
-    getPlotType(){
-      return this.shortPlot ? "&plot=short" : "&plot=full";
-    },
+    const getPlotType = () => {
+      return props.shortPlot ? '&plot=short' : '&plot=full'
+    }
+
+    /**
+     * Make API request to the OMDB API to get the data for movie by passing OMDB movie id as parameter.
+     */
+    const getData = () => {
+      loading.value = true
+      axios.get('http://www.omdbapi.com/?i=' + props.movieId + getPlotType() + GlobalConfig.apiKey)
+        .then((response) => {
+          movieData.value = response.data
+          if (movieData.value.Plot && movieData.value.Plot.length > 200) {
+            movieData.value.lessPlot = movieData.value.Plot.slice(0, 200)
+            movieData.value.morePlot = movieData.value.Plot.slice(200, movieData.value.Plot.length - 1)
+          }
+          loading.value = false
+        })
+        .catch(() => {
+          loading.value = false
+        })
+    }
 
     /**
      * Toggles display of plot as full or shortened basically switching between "Show more" & "show less"
      */
-    toggleMore(){
-      this.moreShown = !this.moreShown;
+    const toggleMore = () => {
+      moreShown.value = !moreShown.value
+    }
+
+    /**
+     * Capitalize filter function
+     */
+    const capitalize = (value) => {
+      if (!value) return ''
+      value = value.toString()
+      return value.charAt(0).toUpperCase() + value.slice(1)
+    }
+
+    /**
+     * Lifecycle hook
+     */
+    onMounted(() => {
+      getData()
+    })
+
+    return {
+      movieData,
+      moreShown,
+      loading,
+      isPlotBig,
+      actorsList,
+      getPlotType,
+      getData,
+      toggleMore,
+      capitalize
     }
   }
-}
+})
 </script>

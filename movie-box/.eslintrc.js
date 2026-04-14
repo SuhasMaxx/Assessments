@@ -7,7 +7,7 @@ module.exports = {
     jest: true
   },
   extends: [
-    'plugin:vue/essential',
+    'plugin:vue/vue3-essential',
     'eslint:recommended'
   ],
   parser: 'vue-eslint-parser',
@@ -17,5 +17,7 @@ module.exports = {
     ecmaVersion: 2020,
     sourceType: 'module'
   },
-  rules: {}
+  rules: {
+    'vue/multi-word-component-names': 'off'
+  }
 }

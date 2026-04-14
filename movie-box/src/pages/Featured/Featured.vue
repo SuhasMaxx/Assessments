@@ -1,45 +1,37 @@
 <template src="./featured.template.html" />
 <style src="./featured.style.css" scoped></style>
 <script>
+/* eslint-disable no-unused-vars */
+import { ref, onMounted, defineComponent } from 'vue'
 import GlobalConfig from '../../moviebox.config.json'
-import MovieBlock from '../../components/MovieBlock/MovieBlock'
+import MovieBlock from '../../components/MovieBlock/MovieBlock.vue'
 
 /**
  * Featured page for the MovieBox app
  * 
- * The page shows featured movies from the application. The featured movies list is specified in the glocal config file.
+ * The page shows featured movies from the application. 
+ * The featured movies list is specified in the global config file.
  */
-export default {
+export default defineComponent({
   name: 'Featured',
   components: {
     MovieBlock
   },
-  props: {
-  },
-  /**
-   * Initialize empty movie collection
-   */
-  data() {
-    return {
-      /**
-       * List of movie Id's to be displyed
-       */
-      movies:[]
-    }
-  },
-  /**
-   * Initialize the featured movies by getting id's from global config
-   */
-  mounted() {
-    this.movies = GlobalConfig.featuredMovies;
-    this.$emit('featurePageLoaded');
-  },
+  setup(props, { emit }) {
+    // State
+    const movies = ref([])
 
-  methods: {
-    
-  },
-  computed:{
-     
+    /**
+     * Initialize the featured movies by getting id's from global config
+     */
+    onMounted(() => {
+      movies.value = GlobalConfig.featuredMovies
+      emit('featurePageLoaded')
+    })
+
+    return {
+      movies
+    }
   }
-}
+})
 </script>
