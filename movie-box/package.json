@@ -12,7 +12,7 @@
     "test:e2e": "testcafe \"chrome:headless\" tests/*.e2e.js"
   },
   "dependencies": {
-    "axios": "^1.6.0",
+    "axios": "^1.16.0",
     "bootstrap": "^4.6.2",
     "bootstrap-vue": "^2.23.1",
     "core-js": "^3.35.0",
